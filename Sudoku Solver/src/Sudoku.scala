@@ -1,4 +1,13 @@
+/**************************
+ * Scott Bouloutian
+ * 2/27/2014
+ * Sudoku.scala
+ * Represents a Sudoku puzzle
+ **************************/
+
 class Sudoku(val puzzleArray: Array[Int]) {
+  
+  
   val elements = puzzleArray
   val symbols = List('.', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G')
   val nums=List(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)
@@ -33,11 +42,21 @@ class Sudoku(val puzzleArray: Array[Int]) {
   override def toString = {
     var result = ""
     for (row <- (0 to 15)) {
-      for (col <- (0 to 15)) {
-        result += symbols(at(row, col))
+      if(row%4==0){
+        result+=" -------------------------------\n"
       }
-      result += '\n'
+      for (col <- (0 to 15)) {
+        if(col%4==0){
+          result+="|"
+        }
+        result += symbols(at(row, col))
+        if(col%4<3){
+          result+=" "
+        }
+      }
+      result += "|\n"
     }
+    result+=" -------------------------------"
     result
   }
 }
