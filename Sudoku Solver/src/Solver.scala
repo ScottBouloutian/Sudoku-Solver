@@ -52,7 +52,6 @@ object Solver {
   // The depth first search algorithm used to solve the sudoku
   def DFS(puzzle: Sudoku): (Boolean, Sudoku) = {
     if (puzzle.solved) {
-      println("solved")
       return (true, puzzle)
     }
     val emptySpace = puzzle.nextOpenSpace
